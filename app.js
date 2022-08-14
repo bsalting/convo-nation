@@ -24,20 +24,22 @@ app.get("/", function (req, res) {
   res.redirect("/convos");
 });
 
-// app.use((err, req, res, next) => {
-//   res
-//     .status(404)
-//     .send(
-//       layout(`<p id="info"> An error occured... <a href="/">Go Back</a></p> `)
-//     );
-// });
+app.use((err, req, res, next) => {
+  res
+    .status(404)
+    .send(
+      layout(
+        `<p id="info"> A handled exception occured. Please notify admin. <a href="/">Go Back</a></p> `
+      )
+    );
+});
 
 app.use((req, res) => {
   res
     .status(404)
     .send(
       layout(
-        `<p id="info"> You're not supposed to be here... <a href="/">Go Back</a></p> `
+        `<p id="info"> Cannot handle request... <a href="/">Go Back</a></p> `
       )
     );
 });
