@@ -20,7 +20,7 @@ router.post("/add", async (req, res, next) => {
     const convo = await Convo.create({
       title: title,
       description: description,
-      userId: 4,
+      userId: "eb210d77-37ea-4e4f-9602-0974a59621dc",
     });
     res.redirect(`/convos/${convo.id}`);
   } catch (err) {
@@ -34,7 +34,7 @@ router.post("/add/:id", async (req, res, next) => {
     const response = await Response.create({
       text: req.body.text,
       convoId: convoId,
-      userId: 4,
+      userId: "eb210d77-37ea-4e4f-9602-0974a59621dc",
     });
     res.redirect(`/convos/${convoId}`);
   } catch (err) {
@@ -45,13 +45,12 @@ router.post("/add/:id", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    // Trying seperate calls instead of multi-table join through includes
     const responses = await Response.findAll({
       include: User,
       where: {
         convoId: id,
       },
-      order: [["id", "ASC"]],
+      order: [["createdAt", "ASC"]],
     });
     const convo = await Convo.findByPk(id, {
       include: User,
@@ -67,7 +66,7 @@ router.get("/", async (req, res, next) => {
   try {
     const convos = await Convo.findAll({
       include: User,
-      order: [["id", "DESC"]],
+      order: [["createdAt", "DESC"]],
     });
     res.send(convoList(convos));
   } catch (err) {

@@ -20,30 +20,17 @@ app.get("/users", async (req, res, next) => {
   );
 });
 
-app.get("/add", async (req, res, next) => {
-  try {
-    console.log("c");
-    const { id } = req.params;
-    const convo = await Convo.create({});
-    res.send(convoDetail(responses, convo));
-  } catch (err) {
-    next(err);
-  }
-});
-
 app.get("/", function (req, res) {
   res.redirect("/convos");
 });
 
-app.use((err, req, res, next) => {
-  res
-    .status(404)
-    .send(
-      layout(
-        `<p id="info"> You're not supposed to be here... <a href="/">Go Back</a></p> `
-      )
-    );
-});
+// app.use((err, req, res, next) => {
+//   res
+//     .status(404)
+//     .send(
+//       layout(`<p id="info"> An error occured... <a href="/">Go Back</a></p> `)
+//     );
+// });
 
 app.use((req, res) => {
   res
