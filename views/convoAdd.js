@@ -1,10 +1,20 @@
 const html = require("html-template-tag");
 const layout = require("./layout");
 
-module.exports = () =>
+module.exports = (users) =>
   layout(html`<h3>New Convo</h3>
     <hr />
     <form method="POST" action="/convos/add">
+      <div class="form-group">
+        <label for="id" class="col-sm-2 control-label">User</label>
+        <div class="col-sm-10">
+          <select name="id" type="text" class="form-control">
+            ${users.map(
+              (user) => html`<option value=${user.id}>${user.name}</option>`
+            )}
+          </select>
+        </div>
+      </div>
       <div class="form-group">
         <label for="title" class="col-sm-2 control-label">Title</label>
         <div class="col-sm-10">

@@ -9,8 +9,13 @@ module.exports = (convos) =>
         ${convos.map(
           (convo) =>
             html`<li>
-                <a href="/convos/${convo.id}">${convo.title}</a> by
-                ${convo.user.name}
+                <a class="detail-list" href="/convos/${convo.id}"
+                  >${convo.title}</a
+                >
+                by ${convo.user.name}
+                <a href="/convos/delete/${convo.id}">
+                  <i class="glyphicon glyphicon-remove"></i>
+                </a>
                 <p>Started on: ${convo.createdAt}</p>
                 <p id="convo-desc">${convo.description}</p>
               </li>
