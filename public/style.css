@@ -1,0 +1,30 @@
+body {
+  padding: 50px;
+  font-family: "Lucida Grande";
+  font-size: 16px;
+}
+
+a {
+  color: dodgerblue;
+}
+
+#nav-items {
+  font-size: 19px;
+}
+
+.navbar-brand {
+  font-size: 21px;
+}
+
+#convo-desc {
+  padding-left: 20px;
+}
+
+.form-group {
+  padding-bottom: 5px;
+}
+
+#info {
+  padding-top: 30px;
+  font-size: 16px;
+}
