@@ -9,6 +9,7 @@ module.exports = (users) =>
         <label for="id" class="col-sm-2 control-label">User</label>
         <div class="col-sm-10">
           <select name="id" type="text" class="form-control">
+            <option value="" disabled selected>Select User</option>
             ${users.map(
               (user) => html`<option value=${user.id}>${user.name}</option>`
             )}

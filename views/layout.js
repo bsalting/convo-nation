@@ -35,6 +35,10 @@ module.exports = (content) => html`<html>
             <li>
               <a href="/users""><span class="glyphicon glyphicon-user"></span> Sign In</a>
             </li>
+            <li>
+              <a href="/users/add"> Create User </a>
+            </li>
+            
           </ul>
         </div>
       </div>

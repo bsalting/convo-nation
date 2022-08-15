@@ -10,21 +10,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(require("method-override")("_method"));
 
+app.use("/users", require("./routes/users"));
 app.use("/convos", require("./routes/convos"));
-
-app.get("/users", async (req, res, next) => {
-  res.send(
-    layout(
-      `<p id="info">Simulating logged in user via form drop-downs for inserts, and admin user for deletes. </p>`
-    )
-  );
-});
 
 app.get("/", function (req, res) {
   res.redirect("/convos");
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   res
     .status(404)
     .send(

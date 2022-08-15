@@ -8,6 +8,10 @@ const setup = async () => {
 
     const [bsalting, mlopez, lpineda, testAcct] = await Promise.all([
       User.create({
+        name: "admin",
+        emailAddress: "admin@convo-nation.com",
+      }),
+      User.create({
         name: "bsalting",
         emailAddress: "bsalting@jpmorgan.com",
       }),
@@ -20,8 +24,8 @@ const setup = async () => {
         emailAddress: "lpineda@yahoo.com",
       }),
       User.create({
-        name: "testAccount",
-        emailAddress: "test@yahoo.com",
+        name: "gatencio",
+        emailAddress: "gatencio@yahoo.com",
       }),
     ]);
 
