@@ -1,6 +1,6 @@
 # dealers-choice-sequelize
 
-# Submission: https://bos-convo-nation.herokuapp.com/
+# homework: https://bos-convo-nation.herokuapp.com/
 
 
 - fork this repo
