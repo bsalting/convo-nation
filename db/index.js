@@ -1,6 +1,6 @@
 const { Sequelize, STRING, UUID, UUIDV4 } = require("sequelize");
 const db = new Sequelize("postgres://localhost:5432/dealers_choice_seq_2", {
-  logging: true,
+  logging: false,
 });
 
 const User = db.define("user", {

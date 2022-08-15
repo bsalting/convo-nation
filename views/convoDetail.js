@@ -13,7 +13,16 @@ module.exports = (responses, convo, users) =>
         (response) => html`
           <div class="card">
             <div class="card-header"><b>${response.user.name}</b> said:</div>
-            <p>${response.createdAt}</p>
+            <span>${response.createdAt}</span>
+            <form
+              style="display:inline"
+              method="POST"
+              action="/convos/details/${response.id}?_method=DELETE"
+            >
+              <button class="btn btn-secondary btn-sm">
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
+            </form>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
                 <p>${response.text}</p>

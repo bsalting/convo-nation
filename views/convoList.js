@@ -13,9 +13,15 @@ module.exports = (convos) =>
                   >${convo.title}</a
                 >
                 by ${convo.user.name}
-                <a href="/convos/delete/${convo.id}">
-                  <i class="glyphicon glyphicon-remove"></i>
-                </a>
+                <form
+                  style="display:inline"
+                  method="POST"
+                  action="/convos/${convo.id}?_method=DELETE"
+                >
+                  <button class="btn btn-secondary btn-sm">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </form>
                 <p>Started on: ${convo.createdAt}</p>
                 <p id="convo-desc">${convo.description}</p>
               </li>

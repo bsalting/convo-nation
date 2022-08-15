@@ -41,6 +41,34 @@ router.post("/add/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/details/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const response = await Response.findByPk(id);
+    await Response.destroy({
+      where: { id: id },
+    });
+    res.redirect(`/convos/${response.convoId}`);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Response.destroy({
+      where: { convoId: id },
+    });
+    await Convo.destroy({
+      where: { id: id },
+    });
+    res.redirect(`/convos`);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -68,7 +96,6 @@ router.get("/", async (req, res, next) => {
       include: User,
       order: [["createdAt", "DESC"]],
     });
-    console.log(convos);
     res.send(convoList(convos));
   } catch (err) {
     next(err);

@@ -3,4 +3,4 @@
   - example a Category.hasMany(Product), Product.belongsTo(Category) Category is parent model
 - [x] Clicking on link will display a detail page which shows details of the parent model along with the item in the child model
 - [x] A user should be able to add an item in the child model (hint you'll need to use a select in your form)
-- [ ] A user should be able to delete an item in the child model
+- [x] A user should be able to delete an item in the child model
