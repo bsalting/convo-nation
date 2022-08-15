@@ -18,7 +18,7 @@ router.post("/add", async (req, res, next) => {
     const convo = await Convo.create({
       title: title,
       description: description,
-      userId: id,
+      starterId: id,
     });
     res.redirect(`/convos/${convo.id}`);
   } catch (err) {
@@ -33,7 +33,7 @@ router.post("/add/:id", async (req, res, next) => {
     const response = await Response.create({
       text: text,
       convoId: convoId,
-      userId: id,
+      responderId: id,
     });
     res.redirect(`/convos/${convoId}`);
   } catch (err) {
@@ -73,15 +73,16 @@ router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const responses = await Response.findAll({
-      include: User,
+      include: [{ model: User, as: "responder" }],
       where: {
         convoId: id,
       },
       order: [["createdAt", "ASC"]],
     });
+    // This is for the convo creator, not the response creator.
     const convo = await Convo.findByPk(id, {
-      include: User,
-      order: [[User, "createdAt", "DESC"]],
+      include: [{ model: User, as: "starter" }],
+      order: [["createdAt", "DESC"]],
     });
     const users = await User.findAll();
     res.send(convoDetail(responses, convo, users));
@@ -93,7 +94,7 @@ router.get("/:id", async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const convos = await Convo.findAll({
-      include: User,
+      include: [{ model: User, as: "starter" }],
       order: [["createdAt", "DESC"]],
     });
     res.send(convoList(convos));

@@ -12,7 +12,7 @@ module.exports = (convos) =>
                 <a class="detail-list" href="/convos/${convo.id}"
                   >${convo.title}</a
                 >
-                by ${convo.user.name}
+                by ${convo.starter.name}
                 <form
                   style="display:inline"
                   method="POST"

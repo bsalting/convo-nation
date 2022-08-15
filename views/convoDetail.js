@@ -5,14 +5,16 @@ module.exports = (responses, convo, users) =>
   layout(html`<h3>Join Convo</h3>
     <hr />
     <h4 class="title-blue">${convo.title}</h4>
-    <p>by ${convo.user.name} | ${convo.createdAt}</p>
+    <p>by ${convo.starter.name} | ${convo.createdAt}</p>
     <p id="convo-desc">${convo.description}</p>
     <hr />
     <div id="detail-div">
       ${responses.map(
         (response) => html`
           <div class="card">
-            <div class="card-header"><b>${response.user.name}</b> said:</div>
+            <div class="card-header">
+              <b>${response.responder.name}</b> said:
+            </div>
             <span>${response.createdAt}</span>
             <form
               style="display:inline"

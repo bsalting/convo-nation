@@ -1,7 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const { Convo } = require("./db");
-const { layout, convoDetail, convoList, convoAdd } = require("./views");
+const { layout } = require("./views");
 const app = express();
 
 app.use(morgan("dev"));

@@ -1,6 +1,6 @@
 const { Sequelize, STRING, UUID, UUIDV4 } = require("sequelize");
 const db = new Sequelize(
-  process.env.DATABASE_URL || "postgres://localhost:5432/dealers_choice_seq_2",
+  process.env.DATABASE_URL || "postgres://localhost/dealers_choice_seq_2",
   {
     logging: false,
   }
@@ -41,6 +41,11 @@ const Convo = db.define("convo", {
     type: STRING,
     allowNull: false,
   },
+  starterId: {
+    type: UUID,
+    defaultValue: UUIDV4,
+    allowNull: false,
+  },
 });
 
 const Response = db.define("response", {
@@ -53,7 +58,7 @@ const Response = db.define("response", {
     type: STRING,
     allowNull: false,
   },
-  userId: {
+  responderId: {
     type: UUID,
     defaultValue: UUIDV4,
     allowNull: false,
@@ -65,13 +70,13 @@ const Response = db.define("response", {
   },
 });
 
-Convo.belongsTo(User);
+Convo.belongsTo(User, { as: "starter" });
 User.hasMany(Convo);
 
 Response.belongsTo(Convo);
 Convo.hasMany(Response);
 
-Response.belongsTo(User);
+Response.belongsTo(User, { as: "responder" });
 User.hasMany(Response);
 
 module.exports = { db, User, Convo, Response };
