@@ -1,3 +1,5 @@
+App deployed on Heroku: https://bos-convo-nation.herokuapp.com/
+
 - [x] Create schema with a belongsTo and hasMany relationship. The belongsTo relationship should be required.
 - [x] User should be able to view a Listing page which displays the items in the parent model
   - example a Category.hasMany(Product), Product.belongsTo(Category) Category is parent model
