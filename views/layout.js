@@ -4,7 +4,7 @@ module.exports = (content) => html`<html>
   <head>
     <title>Convo-Nation</title>
     <link
-      href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link href="/style.css" rel="stylesheet" />
