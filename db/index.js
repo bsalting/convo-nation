@@ -50,6 +50,16 @@ const Response = db.define("response", {
     type: STRING,
     allowNull: false,
   },
+  userId: {
+    type: UUID,
+    defaultValue: UUIDV4,
+    allowNull: false,
+  },
+  convoId: {
+    type: UUID,
+    defaultValue: UUIDV4,
+    allowNull: false,
+  },
 });
 
 Convo.belongsTo(User);
